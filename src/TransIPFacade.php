@@ -1,6 +1,6 @@
 <?php
 
-namespace IntVent\TransIPLaravel;
+namespace Natpnk\TransIPLaravel;
 
 /**
  * @method static \Transip\Api\Library\Repository\AvailabilityZoneRepository availabilityZone()
@@ -63,13 +63,12 @@ namespace IntVent\TransIPLaravel;
  *
  * @see \Transip\Api\Library\TransipAPI
  */
-class TransIPFacade extends \Illuminate\Support\Facades\Facade
-{
+class TransIPFacade extends \Illuminate\Support\Facades\Facade {
+    
     /**
      * {@inheritdoc}
      */
-    protected static function getFacadeAccessor()
-    {
+    protected static function getFacadeAccessor(){
         return 'transip';
     }
 }
