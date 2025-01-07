@@ -2,10 +2,6 @@
 
 A very easy way to use the TransIP Rest API in your Laravel Project.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/intvent/transip-laravel.svg?style=flat-square)](https://packagist.org/packages/intvent/transip-laravel)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Total Downloads](https://img.shields.io/packagist/dt/intvent/transip-laravel.svg?style=flat-square)](https://packagist.org/packages/intvent/transip-laravel)
-
 ## Link to documentation
 
 To make full advantage of this package you can see here what functionality can be used within the API of TransIP.
@@ -27,7 +23,7 @@ TRANSIP_WHITELIST_ONLY=false
 ## Install with composer
 
 ```bash
-composer require intvent/transip-laravel
+composer require natpnk/transip-laravel
 ```
 
 This package will autoload the SrviceProvider and Facade listed below. If it does not automatically you can add it easily with the following steps.
@@ -36,7 +32,7 @@ Register the Service Provider:
 ```php
 'providers' => [
     ...
-    IntVent\TransIPLaravel\TransIPServiceProvider::class,
+    Natpnk\TransIPLaravel\TransIPServiceProvider::class,
 ];
 ```
 
@@ -44,7 +40,7 @@ Optionally the Facade can be registered:
 ```php
 'aliases' => [
 	...
-    'TransIP' => IntVent\TransIPLaravel\TransIPFacade::class,
+    'Natpnk' => Natpnk\TransIPLaravel\TransIPFacade::class,
     ...
 ]
 ```
@@ -52,7 +48,7 @@ Optionally the Facade can be registered:
 You must publish the configuration with this command:
 
 ```bash
-php artisan vendor:publish --provider="IntVent\TransIPLaravel\TransIPServiceProvider"
+php artisan vendor:publish --provider="Natpnk\TransIPLaravel\TransIPServiceProvider"
 ```
 
 This will add a configuration file called 'transip.php' in the config folder with the following contents:
@@ -68,11 +64,8 @@ return [
     */
 
     'login' => env('TRANSIP_LOGIN'),
-
     'privateKey' => env('TRANSIP_PRIVATE_KEY'),
-
     'generateWhitelistOnlyTokens' => env('TRANSIP_WHITELIST_ONLY', true),
-
 ];
 ```
 
@@ -95,35 +88,19 @@ Using the auto IoC binding
 
 use Transip\Api\Library\TransipAPI;
 
-class TransipTestCommand extends Command
-{
+class TransipTestCommand extends Command {
+    
     protected $signature = 'transip:test';
     
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
     }
     
-    public function handle(TransipAPI $api))
-    {
+    public function handle(TransipAPI $api)){
         $allVps = $api->vps()->getAll();
     }
 }
 ```
-
-## Security
-
-If you discover any security-related issues, please email info@intvent.nl instead of using the issue tracker.
-
-## Support
-
-You can sponsor me, Peter Steenbergen also known as Peter Icebear, on [Github sponsors](https://github.com/sponsors/petericebear) or through this [affiliate link](https://bit.ly/TransIP-VPS).  
-
-## Credits
-
-- [Peter Steenbergen](https://github.com/petericebear)
-- [All Contributors](../../contributors)
-
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
